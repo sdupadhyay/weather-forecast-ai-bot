@@ -1,5 +1,8 @@
 import { weatherAgent } from "./mastra/agents";
 import * as readline from "readline";
+const threadId = `session-${Date.now()}`;
+const userId = "demo-user";
+console.log("Thread ID", threadId);
 const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout,
@@ -23,7 +26,12 @@ const chatLoop = () => {
 			console.log("🤖 Agent is thinking...");
 
 			// 3. Call the Agent
-			const response = await weatherAgent.generate(userInput);
+			const response = await weatherAgent.generate(userInput, {
+				memory: {
+					thread: threadId,
+					resource: userId,
+				},
+			});
 
 			// 4. Print the result
 			console.log(`\n🤖 Agent: ${response.text}`);
