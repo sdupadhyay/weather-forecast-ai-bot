@@ -8,4 +8,14 @@ export const storage = new PostgresStore({
 });
 
 // 2. Export the Memory instance
-export const agentMemory = new Memory({ storage });
+export const agentMemory = new Memory({
+	storage,
+	options: {
+		workingMemory: {
+			enabled: true,
+			template: `# User Profile
+- City:
+`,
+		},
+	},
+});
