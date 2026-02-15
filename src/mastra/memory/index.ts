@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { Memory } from "@mastra/memory";
 import { PostgresStore } from "@mastra/pg";
 
