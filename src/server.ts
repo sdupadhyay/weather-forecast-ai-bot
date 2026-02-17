@@ -44,6 +44,10 @@ app.post("/api/chat/stream", async (req, res) => {
 				resource: userId,
 			},
 		});
+		// sendSSE(res, {
+		// 	type: "thinking",
+		// 	data: "Fetching weather data and Analyzing temperature trends",
+		// });
 		const reader = response.textStream.getReader();
 		while (true) {
 			const { done, value } = await reader.read();
